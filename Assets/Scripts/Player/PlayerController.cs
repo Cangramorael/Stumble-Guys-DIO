@@ -15,9 +15,11 @@ public class PlayerController : MonoBehaviour
 
     [HideInInspector] public Vector2 movementVector;
     [HideInInspector] public Rigidbody thisRigidbody;
+    [HideInInspector] public Animator thisAnimator;
 
     void Awake() {
         thisRigidbody = GetComponent<Rigidbody>();
+        thisAnimator = GetComponent<Animator>();
     }
 
     // Start is called before the first frame update
@@ -39,6 +41,11 @@ public class PlayerController : MonoBehaviour
         float inputX = isRight ? 1 : isLeft ? -1 : 0;
         float inputY = isUp ? 1 : isDown ? -1 : 0;
         movementVector = new Vector2(inputX, inputY);
+
+        //Passar a Velocidade (de 0 para 1) pro Animator
+        float velocity = thisRigidbody.velocity.magnitude;
+        float velocityRate = velocity / movementSpeed;
+        thisAnimator.SetFloat("fvelocity", velocityRate);
 
         stateMachine.Update();
     }
