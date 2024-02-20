@@ -497,7 +497,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e0dc8b8b0f4b5439b32a3d9ef1384d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  degreesPerSecond: 90
+  degreesPerSecond: 15
 --- !u!1 &6932707126528429351
 GameObject:
   m_ObjectHideFlags: 0
@@ -654,17 +654,17 @@ PrefabInstance:
     - target: {fileID: 904895736728776607, guid: 25aa042a24bbc884d8b400c2fc56b20a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -34.557
+      value: -33.939
       objectReference: {fileID: 0}
     - target: {fileID: 904895736728776607, guid: 25aa042a24bbc884d8b400c2fc56b20a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.101
+      value: 3.763
       objectReference: {fileID: 0}
     - target: {fileID: 904895736728776607, guid: 25aa042a24bbc884d8b400c2fc56b20a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 13.164064
+      value: -2.9
       objectReference: {fileID: 0}
     - target: {fileID: 904895736728776607, guid: 25aa042a24bbc884d8b400c2fc56b20a,
         type: 3}
@@ -701,6 +701,32 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5125765441971011864, guid: 25aa042a24bbc884d8b400c2fc56b20a,
+        type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 6510717172920361891}
+    - target: {fileID: 5125765441971011864, guid: 25aa042a24bbc884d8b400c2fc56b20a,
+        type: 3}
+      propertyPath: force.x
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5125765441971011864, guid: 25aa042a24bbc884d8b400c2fc56b20a,
+        type: 3}
+      propertyPath: force.y
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 5125765441971011864, guid: 25aa042a24bbc884d8b400c2fc56b20a,
+        type: 3}
+      propertyPath: bombPrefabs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5125765441971011864, guid: 25aa042a24bbc884d8b400c2fc56b20a,
+        type: 3}
+      propertyPath: bombPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 8583144261858141062, guid: cf1c0d474459a254aa5095c2eff67db6,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25aa042a24bbc884d8b400c2fc56b20a, type: 3}
 --- !u!4 &495370373730332666 stripped
