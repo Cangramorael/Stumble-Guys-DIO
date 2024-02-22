@@ -10,6 +10,8 @@ public class BombScript : MonoBehaviour
 
     public float BlastRadius = 1.5f;
 
+    public float BlastDamage = 10f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,7 +41,17 @@ public class BombScript : MonoBehaviour
         foreach(Collider collider in colliders) {
             GameObject hitObject = collider.gameObject;
             if(hitObject.CompareTag("Platform")) {
-                Destroy(hitObject);
+                LifeScript lifeScript = hitObject.GetComponent<LifeScript>();
+                if(lifeScript != null) {
+                    float distance = (hitObject.transform.position - transform.position).magnitude;
+                    float distanceRate = Mathf.Clamp(distance / BlastRadius, 0, 1);
+                    float damageRate = 1f - Mathf.Pow(distanceRate, 4);
+                    int damage = (int) Mathf.Ceil(damageRate * BlastDamage);
+                    lifeScript.health -= damage;
+                    if(lifeScript.health <= 0) {
+                        Destroy(hitObject);
+                    }
+                }
             }
         }
 
