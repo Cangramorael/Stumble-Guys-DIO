@@ -328,9 +328,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aec65bf6c01a030498176a44ff97aee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ExplosionDelay: 5
+  ExplosionDelay: 3
   ExplosionPrefab: {fileID: 5584259686465022622, guid: 372b6aaa455394949bb5b5d4ee573217,
     type: 3}
+  BlastRadius: 1.5
 --- !u!1001 &6657619243880049220
 PrefabInstance:
   m_ObjectHideFlags: 0

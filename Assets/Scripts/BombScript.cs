@@ -8,6 +8,8 @@ public class BombScript : MonoBehaviour
 
     public GameObject ExplosionPrefab;
 
+    public float BlastRadius = 1.5f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +35,13 @@ public class BombScript : MonoBehaviour
         Instantiate(ExplosionPrefab, transform.position, ExplosionPrefab.transform.rotation);
 
         //Destroy plataforms
-        //To do
+        Collider[] colliders = Physics.OverlapSphere(transform.position, BlastRadius);
+        foreach(Collider collider in colliders) {
+            GameObject hitObject = collider.gameObject;
+            if(hitObject.CompareTag("Platform")) {
+                Destroy(hitObject);
+            }
+        }
 
         //Create SFX
         //To do

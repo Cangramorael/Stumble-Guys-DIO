@@ -84,6 +84,7 @@ MonoBehaviour:
   target: {fileID: 0}
   rangeInDegrees: 0
   force: {x: 100, y: 100}
+  heightInDegrees: 45
 --- !u!1 &1028829775619793229
 GameObject:
   m_ObjectHideFlags: 0
