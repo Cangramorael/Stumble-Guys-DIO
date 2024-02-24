@@ -331,6 +331,8 @@ MonoBehaviour:
   ExplosionDelay: 3
   ExplosionPrefab: {fileID: 5584259686465022622, guid: 372b6aaa455394949bb5b5d4ee573217,
     type: 3}
+  WoodBreakingPrefab: {fileID: 5584259686465022622, guid: 0110aa69c4ab3f9469187755be81c861,
+    type: 3}
   BlastRadius: 3
   BlastDamage: 6
 --- !u!1001 &6657619243880049220

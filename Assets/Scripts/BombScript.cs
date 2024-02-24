@@ -8,6 +8,8 @@ public class BombScript : MonoBehaviour
 
     public GameObject ExplosionPrefab;
 
+    public GameObject WoodBreakingPrefab;
+
     public float BlastRadius = 1.5f;
 
     public float BlastDamage = 10f;
@@ -49,6 +51,7 @@ public class BombScript : MonoBehaviour
                     int damage = (int) Mathf.Ceil(damageRate * BlastDamage);
                     lifeScript.health -= damage;
                     if(lifeScript.health <= 0) {
+                        Instantiate(WoodBreakingPrefab, hitObject.transform.position, WoodBreakingPrefab.transform.rotation);
                         Destroy(hitObject);
                     }
                 }
