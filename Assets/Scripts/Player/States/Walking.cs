@@ -17,6 +17,11 @@ public class Walking : State {
     public override void Update() {
         base.Update();
 
+        if(controller.hasJumpInput) {
+            controller.stateMachine.ChangeState(controller.jumpState);
+            return;
+        }
+
         if(controller.movementVector.IsZero()) {
             controller.stateMachine.ChangeState(controller.idleState);
             return;
@@ -27,7 +32,8 @@ public class Walking : State {
     }
     public override void FixedUpdate() {
         base.FixedUpdate();
-
+        
+        // Create vector
         Vector3 walkVector = new Vector3(controller.movementVector.x, 0, controller.movementVector.y);
         walkVector = controller.GetFoward() * walkVector;
         walkVector *= controller.movementSpeed;
