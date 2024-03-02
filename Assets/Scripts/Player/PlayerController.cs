@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public Idle idleState;
     [HideInInspector] public Walking walkingState;
     [HideInInspector] public Jump jumpState;
+    [HideInInspector] public Dead deadState;
 
     [HideInInspector] public Vector2 movementVector;
     [HideInInspector] public bool hasJumpInput;
@@ -36,12 +37,19 @@ public class PlayerController : MonoBehaviour
         idleState = new Idle(this);
         walkingState = new Walking(this);
         jumpState = new Jump(this);
+        deadState = new Dead(this);
         stateMachine.ChangeState(idleState);
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Check game over
+        if(GameManager.Instance.isGameOver) {
+            if(stateMachine.currentStateName != deadState.name) {
+                stateMachine.ChangeState(deadState);
+            }
+        }
         bool isUp = Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow);
         bool isDown = Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow);
         bool isLeft = Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow);
@@ -108,7 +116,7 @@ public class PlayerController : MonoBehaviour
         float maxDistance = bounds.size.y * 0.25f;
         if(Physics.SphereCast(origin, radius, direction, out var hitInfo, maxDistance)) {
             GameObject hitObject = hitInfo.transform.gameObject;
-            if(hitObject.CompareTag("Platform")) {
+            if(hitObject.CompareTag("Platform") | hitObject.CompareTag("Water")) {
                 isGrounded = true;
             }
         }
