@@ -100,9 +100,9 @@ public class PlayerController : MonoBehaviour
         thisRigidbody.MoveRotation(newRotation);
     }
 
-    void OnGUI() {
+    /*void OnGUI() {
         GUI.Label(new Rect(5,5,400,100), stateMachine.currentStateName);
-    }
+    }*/
 
     private void DetectGround() {
         // Reset flag
@@ -122,7 +122,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void OnDrawGizmos() {
+    /*void OnDrawGizmos() {
         if(!thisCollider) return;
 
         Vector3 origin = transform.position;
@@ -143,6 +143,6 @@ public class PlayerController : MonoBehaviour
         Vector3 spherePosition = direction * maxDistance + origin;
         Gizmos.color = isGrounded ? Color.green : Color.red;
         Gizmos.DrawSphere(spherePosition, radius);
-    }
+    }*/
 
 }

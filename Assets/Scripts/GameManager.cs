@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -39,7 +40,7 @@ public class GameManager : MonoBehaviour
             score += Time.deltaTime;
 
             // Update highest score
-            if(GetScore() > GetHighetScore()) {
+            if(GetScore() > GetHighestScore()) {
                 highestScore = GetScore();
             }
         }
@@ -49,7 +50,7 @@ public class GameManager : MonoBehaviour
         return (int) Mathf.Floor(score);
     }
 
-    public int GetHighetScore() {
+    public int GetHighestScore() {
         return highestScore;
     }
 
@@ -66,7 +67,19 @@ public class GameManager : MonoBehaviour
         gameOverSfx.Play();
 
         // Save highest score
-        PlayerPrefs.SetInt(KEY_HIGHEST_SCORE, GetHighetScore());
+        PlayerPrefs.SetInt(KEY_HIGHEST_SCORE, GetHighestScore());
+
+        // Reload scene
+        StartCoroutine(ReloadScene(5));
+    }
+
+    private IEnumerator ReloadScene(float delay) {
+        // Wait
+        yield return new WaitForSeconds(delay);
+
+        // Reload scene
+        string sceneName = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(sceneName);
     }
 
 }
